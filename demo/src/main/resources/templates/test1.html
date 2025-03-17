@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .header {
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .details {
+      margin-bottom: 20px;
+    }
+
+    .items {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .items th, .items td {
+      border: 1px solid #000;
+      padding: 8px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+<div class="header">
+  发票
+</div>
+<div class="details">
+  <p>客户: <span th:text="${customerName}"></span></p>
+  <p>日期: <span th:text="${date}"></span></p>
+</div>
+<table class="items">
+  <thead>
+  <tr>
+    <th>商品ID</th>
+    <th>商品名称</th>
+    <th>数量</th>
+    <th>单价</th>
+    <th>总价</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="item : ${items}">
+    <td th:text="${item.id}"></td>
+    <td th:text="${item.name}"></td>
+    <td th:text="${item.quantity}"></td>
+    <td th:text="${item.price}"></td>
+    <td th:text="${item.totalPrice}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
